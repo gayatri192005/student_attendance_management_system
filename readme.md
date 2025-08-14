@@ -57,10 +57,12 @@ java Main
 ---
 
 ## 📸 Sample Output
+<img width="1241" height="746" alt="image" src="https://github.com/user-attachments/assets/2123e631-de25-47a8-b285-9910c0f03802" />
+
 
 ```
 ===== Student Management System =====
-1. Add Student
+1. Add Student 
 2. View Students
 3. Update Student
 4. Delete Student
