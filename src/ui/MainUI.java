@@ -60,32 +60,27 @@ public class MainUI extends JFrame {
         }
     }
 
-    private void handleAdd(ActionEvent e) {
-        try {
-            int roll = Integer.parseInt(JOptionPane.showInputDialog("Enter Roll Number:"));
-            String name = JOptionPane.showInputDialog("Enter Name:");
-            double marks = Double.parseDouble(JOptionPane.showInputDialog("Enter Marks:"));
-            studentService.addStudent(new Student(roll, name, marks));
+    private void handleAdd(ActionEvent e) 
+    {
+        new AddStudentDialog(this, studentService); // Custom form popup
+        refreshTable(); // Table update after dialog close
+    }
+
+
+    private void handleUpdate(ActionEvent e)
+    {
+        try
+        {
+            int roll = Integer.parseInt(JOptionPane.showInputDialog("Enter Roll Number to Update:"));
+            new UpdateStudentDialog(this, studentService, roll); // Custom dialog
             refreshTable();
-        } catch (Exception ex) {
+        } 
+        catch (Exception ex) 
+        {
             JOptionPane.showMessageDialog(this, "Invalid Input!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    private void handleUpdate(ActionEvent e) {
-        try {
-            int roll = Integer.parseInt(JOptionPane.showInputDialog("Enter Roll Number to Update:"));
-            String name = JOptionPane.showInputDialog("Enter New Name:");
-            double marks = Double.parseDouble(JOptionPane.showInputDialog("Enter New Marks:"));
-            if (studentService.updateStudent(roll, name, marks)) {
-                refreshTable();
-            } else {
-                JOptionPane.showMessageDialog(this, "Student Not Found!");
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Invalid Input!", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
 
     private void handleDelete(ActionEvent e) {
         try {
